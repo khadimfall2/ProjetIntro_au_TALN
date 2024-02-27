@@ -42,10 +42,10 @@ Khadim Fall M1 DS Nantes Universite
 
 | Run      | f1 Score |
 | -------- | --------:|
-| baseline |  15,2 |
-| METH 2   |   6,8 |
-| METH 3   |  50,8 |
-| METH 4   |  70,2 |
+| baseline |  0.33 |
+| TF-IDF   |  0.86 |
+| Word2Vec |  0.81 |
+| CountVectorizer   |  0.84 |
 
 ### Analyse de résultats
 	
