@@ -10,10 +10,12 @@ Khadim Fall M1 DS Nantes Universite
 ## Statistiques corpus
 
 **Nombre de documents de train/validation/test :**
- 
--``Entraînement``: 9978
--``Validation``: 2495
--``Test`` : 1388 
+
+|   datset      | nombre |
+|---------------|--------|
+| ``Entraînement``  |  9978  |
+| ``Validation``:    |  2495  |
+| ``Test``          |  1388  |
 
 **Répartition des étiquettes dans chacun des sous-ensembles :**
 **Train:**
