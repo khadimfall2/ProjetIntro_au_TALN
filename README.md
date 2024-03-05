@@ -3,19 +3,38 @@
 Baye Lahad Mbacke M1 ATAL Nantes Universite
 Khadim Fall M1 DS Nantes Universite 
 ## Description de la tâche
-
-	1 ou 2 exemples de documents (avec leur identifiant)
     La tâche consiste à classer automatiquement les recettes de cuisine en trois catégories : Plat principal, Entrée ou Dessert, en se basant sur le titre et les instructions de la recette.
+## Exemple de document 1 :
+**Identifiant** : recette_170277.xml  
+**Titre** : Langue de boeuf sauce piquante aux cornichons  
+**Type** : Plat principal  
+**Difficulté** : Facile  
+**Coût** : Moyen  
+**Ingrédients** :
+- 1 langue de 1,5 kg
+- 20 cl de vinaigre d'alc...  
+
+**Recette** : Faire tremper la langue toute une nuit dans un...
+
+## Exemple de document 2 :
+**Identifiant** : recette_21519.xml  
+**Titre** : Tarte aux raisins et amandes  
+**Type** : Dessert  
+**Difficulté** : Facile  
+**Coût** : Moyen  
+**Ingrédients** :
+- 1 pâte brisée
+- 150 g de raisins bien mûrs
 
 ## Statistiques corpus
 
 **Nombre de documents de train/validation/test :**
 
-|   datset      | nombre |
+|   Dataset     | nombre |
 |---------------|--------|
-| ``Entraînement``  |  9978  |
-| ``Validation``:    |  2495  |
-| ``Test``          |  1388  |
+| Entraînement  |  9978  |
+| Validation``: |  2495  |
+| Test          |  1388  |
 
 **Répartition des étiquettes dans chacun des sous-ensembles :**
 |   Dataset   | Plat principal | Entrée | Dessert |
