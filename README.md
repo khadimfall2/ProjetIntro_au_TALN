@@ -1,7 +1,7 @@
 # DEFT2013 Tâche 2 : NOMEQUIPE (optionnel)
 
-Baye Lahad Mbacke M1 ATAL Nantes Universite
-Khadim Fall M1 DS Nantes Universite 
+**Baye Lahad Mbacke M1 ATAL**
+**Khadim Fall M1 DS**
 ## Description de la tâche
     La tâche consiste à classer automatiquement les recettes de cuisine en trois catégories : Plat principal, Entrée ou Dessert, en se basant sur le titre et les instructions de la recette.
 ## Exemple de document 1 :
