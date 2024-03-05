@@ -9,23 +9,25 @@ Khadim Fall M1 DS Nantes Universite
 
 ## Statistiques corpus
 
-	Nombre de documents de train/dev/test :
-    Train : 800 recettes
-    Validation : 200 recettes
-    Test : 500 recettes
-    Répartition des étiquettes dans chacun des sous-ensembles :
-    Train :
-        Plat principal : 300
-        Entrée : 250
-        Dessert : 250
-    Validation :
-        Plat principal : 75
-        Entrée : 50
-        Dessert : 75
-    Test :
-        Plat principal : 200
-        Entrée : 150
-        Dessert : 150
+**Nombre de documents de train/validation/test :**
+ 
+``Entraînement``: 9978
+``Validation``: 2495
+``Test`` : 1388 
+
+**Répartition des étiquettes dans chacun des sous-ensembles :**
+**Train:**
+        ``Plat principal`` : 4644
+        ``Entrée`` : 3036
+        ``Dessert`` : 2298
+    **Validation :**
+        ``Plat principal`` : 1158
+        ``Entrée`` : 726
+        ``Dessert`` : 611
+    **Test :**
+        ``Plat principal`` : 644
+        ``Entrée`` : 407
+        ``Dessert`` : 337
 
 ## Méthodes proposées
 
