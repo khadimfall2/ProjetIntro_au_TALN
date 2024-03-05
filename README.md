@@ -11,9 +11,9 @@ Khadim Fall M1 DS Nantes Universite
 
 **Nombre de documents de train/validation/test :**
  
-``Entraînement``: 9978
-``Validation``: 2495
-``Test`` : 1388 
+-``Entraînement``: 9978
+-``Validation``: 2495
+-``Test`` : 1388 
 
 **Répartition des étiquettes dans chacun des sous-ensembles :**
 **Train:**
