@@ -18,18 +18,11 @@ Khadim Fall M1 DS Nantes Universite
 | ``Test``          |  1388  |
 
 **Répartition des étiquettes dans chacun des sous-ensembles :**
-**Train:**
-        ``Plat principal`` : 4644
-        ``Entrée`` : 3036
-        ``Dessert`` : 2298
-    **Validation :**
-        ``Plat principal`` : 1158
-        ``Entrée`` : 726
-        ``Dessert`` : 611
-    **Test :**
-        ``Plat principal`` : 644
-        ``Entrée`` : 407
-        ``Dessert`` : 337
+|   Dataset   | Plat principal | Entrée | Dessert |
+|-------------|----------------|--------|---------|
+| Entraînement| 4644           | 3036   | 2298    |
+| Validation  | 1158           | 726    | 611     |
+| Test        | 644            | 407    | 337     |
 
 ## Méthodes proposées
 
