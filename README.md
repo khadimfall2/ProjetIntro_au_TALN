@@ -1,4 +1,4 @@
-# DEFT2013 Tâche 2 : NOMEQUIPE (optionnel)
+# DEFT2013 Tâche 2 :
 
 
 | **Baye Lahad Mbacke M1 ATAL** | **Khadim Fall M1 DS**
@@ -29,19 +29,19 @@
 
 ## Statistiques corpus
 
-**Nombre de documents de train/validation/test :**
+**Nombre de documents de train/dev/test :**
 
 |   Dataset     | nombre |
 |---------------|--------|
 | Entraînement  |  9978  |
-| Validation``: |  2495  |
+| dev:          |  2495  |
 | Test          |  1388  |
 
 **Répartition des étiquettes dans chacun des sous-ensembles :**
-|   Dataset   | Plat principal | Entrée | Dessert |
+|   Dataset   | Plat principal |Dessert | Entrée |
 |-------------|----------------|--------|---------|
 | Entraînement| 4644           | 3036   | 2298    |
-| Validation  | 1158           | 726    | 611     |
+| dev         | 1158           | 726    | 611     |
 | Test        | 644            | 407    | 337     |
 
 ## Méthodes proposées
@@ -73,19 +73,19 @@
 
 | Run      | f1 Score |
 | -------- | --------:|
-| baseline |  0.37 |
-| TF-IDF   |  0.87 |
-| Word2Vec |  0.86 |
-| CountVectorizer   |  0.86 |
+| baseline |  0.3557 |
+| TF-IDF   |  0.8741 |
+| Word2Vec |  0.8698 |
+| CountVectorizer   | 0.8641 |
 
 ``Sans Nettoyage des données``
 
 | Run      | f1 Score |
 | -------- | --------:|
-| baseline |  0.32 |
-| TF-IDF   |  0.87 |
-| Word2Vec |  0.82 |
-| CountVectorizer   |  0.85 |
+| baseline |  0.3316 |
+| TF-IDF   |  0.8655 |
+| Word2Vec |  0.8471  |
+| CountVectorizer   | 0.8506 |
 
 
 
