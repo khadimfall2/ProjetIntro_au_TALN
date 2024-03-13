@@ -87,11 +87,10 @@
 | Word2Vec |  0.8471  |
 | CountVectorizer   | 0.8506 |
 
-
-
 ### Analyse des resultats
-**TF-IDF :**
-``Matrice de Confusion :`
+
+#### TF-IDF :
+``Matrice de Confusion :``
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -104,8 +103,8 @@ Le modèle a du mal à distinguer les classes "Entrée" et "Plat principal", com
 Les termes fréquents partagés entre les recettes d'entrées et de plats principaux peuvent conduire à une similarité dans les vecteurs TF-IDF, ce qui complique la distinction pour le modèle.
 
 
-##Word2Vec :
-``Matrice de Confusion :`
+#### Word2Vec :
+``Matrice de Confusion :``
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -118,8 +117,8 @@ Des erreurs significatives sont observées, notamment dans la classification des
 
 Word2Vec capture la sémantique des mots, mais la similarité sémantique entre les recettes de "Plat principal" et "Entrée" peut conduire à des confusions, en particulier si certaines entrées ressemblent à des plats principaux et vice versa.
 
-**CountVectorizer :**
-``Matrice de Confusion :`
+#### CountVectorizer :
+``Matrice de Confusion :``
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
