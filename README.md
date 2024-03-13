@@ -90,8 +90,8 @@
 
 
 ### Analyse des resultats
-TF-IDF :
-Matrice de Confusion :
+**TF-IDF :**
+``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -99,17 +99,13 @@ Matrice de Confusion :
 | Entrée  | 3            | 250         | 84                  |
 | Plat principal | 6    | 70          | 568                 |
 
-### Analyse des Erreurs de Classification
-
 Le modèle a du mal à distinguer les classes "Entrée" et "Plat principal", comme indiqué par les 84 exemples de la classe "Entrée" classés à tort comme "Plat principal" et les 70 exemples de la classe "Plat principal" classés à tort comme "Entrée".
-
-### Raisons possibles
 
 Les termes fréquents partagés entre les recettes d'entrées et de plats principaux peuvent conduire à une similarité dans les vecteurs TF-IDF, ce qui complique la distinction pour le modèle.
 
 
-Word2Vec :
-Matrice de Confusion :
+**Word2Vec :**
+``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -117,16 +113,13 @@ Matrice de Confusion :
 | Entrée  | 3            | 223         | 111                  |
 | Plat principal | 5    | 76          | 523                 |
 
-### Analyse des Erreurs de Classification
 
 Des erreurs significatives sont observées, notamment dans la classification des recettes de la classe "Plat principal" où 111 exemples sont classés à tort comme "Entrée".
 
-### Raisons possibles
-
 Word2Vec capture la sémantique des mots, mais la similarité sémantique entre les recettes de "Plat principal" et "Entrée" peut conduire à des confusions, en particulier si certaines entrées ressemblent à des plats principaux et vice versa.
 
-CountVectorizer :
-Matrice de Confusion :
+**CountVectorizer :**
+``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -134,3 +127,7 @@ Matrice de Confusion :
 | Entrée  | 4            | 244         | 89                  |
 | Plat principal | 8    | 75          | 561                 |
 
+
+Le modèle semble avoir des difficultés similaires à distinguer les classes "Entrée" et "Plat principal" comme observé dans les autres méthodes.
+
+Comme avec TF-IDF, la représentation BoW par CountVectorizer peut également souffrir de la similarité entre les termes fréquents des recettes d'entrées et de plats principaux.
