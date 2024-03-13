@@ -71,7 +71,7 @@
 ## Résultats
 ``Avec Nettoyage des données``
 
-| Run      | f1 Score |
+| Run      | f1 Score |                       
 | -------- | --------:|
 | baseline |  0.3557 |
 | TF-IDF   |  0.8741 |
@@ -89,10 +89,48 @@
 
 
 
-### Analyse de résultats
-	
-	Pistes d'analyse:
-	* Combien de documents ont un score de 0 ? de 0.5 ? de 1 ? (Courbe ROC)
-	* Y-a-t-il des régularités dans les document bien/mal classifiés ?
-	* Où est-ce que l'approche se trompe ? (matrice de confusion)
-	* Si votre méthode le permet: quels sont les descripteurs les plus décisifs ?
+### Analyse des resultats
+TF-IDF :
+Matrice de Confusion :
+
+|         | Pred Dessert | Pred Entrée | Pred Plat principal |
+|---------|--------------|-------------|---------------------|
+| Dessert | 405          | 1           | 1                   |
+| Entrée  | 3            | 250         | 84                  |
+| Plat principal | 6    | 70          | 568                 |
+
+### Analyse des Erreurs de Classification
+
+Le modèle a du mal à distinguer les classes "Entrée" et "Plat principal", comme indiqué par les 84 exemples de la classe "Entrée" classés à tort comme "Plat principal" et les 70 exemples de la classe "Plat principal" classés à tort comme "Entrée".
+
+### Raisons possibles
+
+Les termes fréquents partagés entre les recettes d'entrées et de plats principaux peuvent conduire à une similarité dans les vecteurs TF-IDF, ce qui complique la distinction pour le modèle.
+
+
+Word2Vec :
+Matrice de Confusion :
+
+|         | Pred Dessert | Pred Entrée | Pred Plat principal |
+|---------|--------------|-------------|---------------------|
+| Dessert | 402          | 2           | 3                   |
+| Entrée  | 3            | 223         | 111                  |
+| Plat principal | 5    | 76          | 523                 |
+
+### Analyse des Erreurs de Classification
+
+Des erreurs significatives sont observées, notamment dans la classification des recettes de la classe "Plat principal" où 111 exemples sont classés à tort comme "Entrée".
+
+### Raisons possibles
+
+Word2Vec capture la sémantique des mots, mais la similarité sémantique entre les recettes de "Plat principal" et "Entrée" peut conduire à des confusions, en particulier si certaines entrées ressemblent à des plats principaux et vice versa.
+
+CountVectorizer :
+Matrice de Confusion :
+
+|         | Pred Dessert | Pred Entrée | Pred Plat principal |
+|---------|--------------|-------------|---------------------|
+| Dessert | 402          | 1           | 1                   |
+| Entrée  | 4            | 244         | 89                  |
+| Plat principal | 8    | 75          | 561                 |
+
