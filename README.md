@@ -31,18 +31,18 @@
 
 **Nombre de documents de train/dev/test :**
 
-|   Dataset     | nombre |
+|   Dataset     | nombre :|
 |---------------|--------|
 | Entraînement  |  9978  |
 | dev:          |  2495  |
 | Test          |  1388  |
 
 **Répartition des étiquettes dans chacun des sous-ensembles :**
-|   Dataset   | Plat principal |Dessert | Entrée |
+|   Dataset   | Plat principal (%) |Dessert (%)  | Entrée (%)  |
 |-------------|----------------|--------|---------|
-| Entraînement| 4644           | 3036   | 2298    |
-| dev         | 1158           | 726    | 611     |
-| Test        | 644            | 407    | 337     |
+| Entraînement| 4644 (46.54%)         | 3036 (30.43%)  | 2298 (23.03%)   |
+| dev         | 1158 (46.41% )        | 726 (29.10% )  | 611 (24.49% )   |
+| Test        | 644 (46.40% )         | 407 (29.32%)   | 337 (24.28%)   |
 
 ## Méthodes proposées
 
@@ -87,10 +87,12 @@
 | Word2Vec |  0.8471  |
 | CountVectorizer   | 0.8506 |
 
+
+
 ### Analyse des resultats
 
-#### TF-IDF :
-``Matrice de Confusion :``
+### TF-IDF :
+``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -103,8 +105,8 @@ Le modèle a du mal à distinguer les classes "Entrée" et "Plat principal", com
 Les termes fréquents partagés entre les recettes d'entrées et de plats principaux peuvent conduire à une similarité dans les vecteurs TF-IDF, ce qui complique la distinction pour le modèle.
 
 
-#### Word2Vec :
-``Matrice de Confusion :``
+### Word2Vec
+``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -117,8 +119,8 @@ Des erreurs significatives sont observées, notamment dans la classification des
 
 Word2Vec capture la sémantique des mots, mais la similarité sémantique entre les recettes de "Plat principal" et "Entrée" peut conduire à des confusions, en particulier si certaines entrées ressemblent à des plats principaux et vice versa.
 
-#### CountVectorizer :
-``Matrice de Confusion :``
+**CountVectorizer :**
+``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
