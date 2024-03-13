@@ -104,7 +104,7 @@ Le modèle a du mal à distinguer les classes "Entrée" et "Plat principal", com
 Les termes fréquents partagés entre les recettes d'entrées et de plats principaux peuvent conduire à une similarité dans les vecteurs TF-IDF, ce qui complique la distinction pour le modèle.
 
 
-**Word2Vec :**
+##Word2Vec :
 ``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
