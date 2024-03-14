@@ -53,40 +53,47 @@
 	DummyClassifier de scikit-learn avec la stratégie 'stratified'. Cette stratégie génère des prédictions en respectant la distribution des classes dans l'ensemble de données d'entraînement.
 
 
-## NB: On a nettoyer les données en supprimant  les caractères non alphabétiques,Tokenization,Supprimer les stopwords, convertir en minuscules, lemmatisation
-## avec les methodes suivantes nous avons utilisé le classificateur SVM avec le noyau gaussien car c'est celui qui a donnee les meilleurs resultats contre (Regression logistique,Random Forest, Gradient Boosting, AdaBoost, Naive Bayes) avec les parametres gaussien (rbf) et C=10 car on a tester les hyperprametres et c'est celui qui a donnee les meilleurs resultats
+## NB:
+ On a nettoyer les données en supprimant  les caractères non alphabétiques,tokeniser et enlever la casse avec ``simple_preprocess``on a aussi enlever les stop words avec ``stop_words`` nltk, on a aussi stemmer les mots avec ``FrenchStemmer`` de nltk , enfin on lemmentizer les mots avec la librairie ``Spacy``
+ avec les methodes suivantes nous avons utilisé le classificateur ``SVM`` avec le noyau gaussien car c'est celui qui a donnee les meilleurs resultats contre (Regression logistique,Random Forest, Gradient Boosting, AdaBoost, Naive Bayes) avec les parametres gaussien (rbf) et C=5 car on a supposer que tester les  hyperprametres avec GridSearchCV de scikit-learn c'est celui qui a donnee les meilleurs resultats.
 
 ### Run2: TF-IDF
 
     Pour la méthode Run2, nous utilisons également la représentation TF-IDF (Term Frequency-Inverse Document Frequency) pour la vectorisation des données textuelles
     Les descripteurs utilisés sont les valeurs TF-IDF des termes présents dans les recettes de cuisine.
-    Nous avons utilise le modèle de Support Vector Machine (SVM)car c'est lui qui a les meilleurs resultats avec les parametres gaussien (rbf) et C=10
+    Nous avons utilise le modèle de Support Vector Machine (SVM)
 ### Run3: Word2Vec
 
     Les descripteurs sont les vecteurs de documents moyens générés à partir du modèle Word2Vec. Ces vecteurs représentent chaque document (dans ce cas, chaque recette de cuisine) sous forme d'un vecteur numérique dense dans un espace vectoriel continu
-    Le classifieur utilisé est une machine à vecteurs de support (SVM) avec un noyau gaussien (RBF). Ce choix de classifieur est basé sur l'hypothèse que les vecteurs de documents générés par Word2Vec pourraient bénéficier d'une séparation non linéaire des classes dans l'espace des caractéristiques
-### Run4: CountVectorizer
+    Le classifieur utilisé SVM avec un noyau gaussien (RBF).. On a ajuster les parametres avec GridSearchCV de scikit-learn pour trouver les meilleurs hyperparametres de Word2Vec et on vecteur_size=150,window=10, min_count=2, sg=1 (skip-gram)
+### Run4: Bag of Words
     Les descripteurs sont les vecteurs de compte des termes présents dans les recettes de cuisine. Chaque terme unique dans l'ensemble des données est représenté par un vecteur de caractéristiques, où chaque élément du vecteur représente le nombre d'occurrences du terme correspondant dans le document.
-    Le classifieur utilisé est une machine à vecteurs de support (SVM) avec un noyau gaussien (RBF). Comme dans la méthode précédente, ce choix de classifieur est basé sur l'hypothèse que les caractéristiques extraites des recettes de cuisine peuvent bénéficier d'une séparation non linéaire des classes dans l'espace des caractéristiques
-## Résultats
-``Avec Nettoyage des données``
+    Le classifieur utilisé est une machine à vecteurs de support (SVM) avec un noyau gaussien (RBF).
 
-| Run      | f1 Score |                       
-| -------- | --------:|
-| baseline |  0.3557 |
-| TF-IDF   |  0.8741 |
-| Word2Vec |  0.8698 |
-| CountVectorizer   | 0.8641 |
+## Résultats
+
 
 ``Sans Nettoyage des données``
 
 | Run      | f1 Score |
 | -------- | --------:|
-| baseline |  0.3316 |
-| TF-IDF   |  0.8655 |
-| Word2Vec |  0.8471  |
-| CountVectorizer   | 0.8506 |
+| baseline |  0.356  |
+| TF-IDF   |  0.865 |
+| Word2Vec |  0.838  |
+| Bag of Words   | 0.851 |
 
+
+``Avec Nettoyage des données``
+
+| Run      | f1 Score |                       
+| -------- | --------:|
+| baseline |  0.356 |
+| TF-IDF   |  0.877 |
+| Word2Vec |  0.867 |
+| Bag of Words  | 0.861 |
+
+ Comme vousl'avez remarqué, les résultats sont meilleurs avec le `` Nettoyage des données``, en particulier pour la méthode ``TF-IDF ``. Cela s'explique par le fait que le nettoyage des données permet de réduire le bruit et d'améliorer la qualité des représentations vectorielles des titres et recettes de cuisine, ce qui facilite la tâche de classification pour les modèles.
+ Lors de la nettoyge des données on a commencer par tokeniser et mettre en minuscule les mots avec une fonction simple qu'on a creer  mais ca donner pas ugrand chose, donc on a decider d'utliser ``simple_preprocess`` de gensim qui est plus performant car ca un peu ameliorer les resultats, on a aussi enlever les stop words avec ``stop_words`` nltk, on a aussi stemmer les mots avec ``FrenchStemmer`` de nltk , enfin on lemmentizer les mots avec la librairie ``Spacy``. On a constate aussi que si on fait le stemmer avant la lemmatisation on a des resultats(0.866) moins bons que si on fait le stemmer seulement (0,874),  si on fait le lemmentizing avant le stemming donne le meilleurs resultats. qu'on a eu avec le nettoyage des données (0,877). 
 
 
 ### Analyse des resultats
@@ -119,7 +126,7 @@ Des erreurs significatives sont observées, notamment dans la classification des
 
 Word2Vec capture la sémantique des mots, mais la similarité sémantique entre les recettes de "Plat principal" et "Entrée" peut conduire à des confusions, en particulier si certaines entrées ressemblent à des plats principaux et vice versa.
 
-**CountVectorizer :**
+### Bag of Words :
 ``Matrice de Confusion :`
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
@@ -131,4 +138,4 @@ Word2Vec capture la sémantique des mots, mais la similarité sémantique entre 
 
 Le modèle semble avoir des difficultés similaires à distinguer les classes "Entrée" et "Plat principal" comme observé dans les autres méthodes.
 
-Comme avec TF-IDF, la représentation BoW par CountVectorizer peut également souffrir de la similarité entre les termes fréquents des recettes d'entrées et de plats principaux.
+Comme avec TF-IDF, la représentation BoW par CountVectorizer peut également souffrir de la similarité entre les termes fréquents des titre ou recettes d'entrées et de plats principaux.
