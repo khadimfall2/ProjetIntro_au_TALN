@@ -40,9 +40,9 @@
 **Répartition des étiquettes dans chacun des sous-ensembles :**
 |   Dataset   | Plat principal (%) |Dessert (%)  | Entrée (%)  |
 |-------------|----------------|--------|---------|
-| Entraînement| 4644           | 3036   | 2298    |
-| dev         | 1158           | 726    | 611     |
-| Test        | 644            | 407    | 337     |
+| Entraînement| 4644 (46.54%)         | 3036 (30.43%)  | 2298 (23.03%)   |
+| dev         | 1158 (46.41% )        | 726 (29.10% )  | 611 (24.49% )   |
+| Test        | 644 (46.40% )         | 407 (29.32%)   | 337 (24.28%)   |
 
 ## Méthodes proposées
 
