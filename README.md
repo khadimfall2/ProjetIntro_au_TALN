@@ -1,4 +1,4 @@
-# DEFT2013 Tâche 2 : Mouride
+# DEFT2013 Tâche 2 : YNWA
 
 
 | **Baye Lahad Mbacke M1 ATAL** | **Khadim Fall M1 DS**
@@ -107,8 +107,8 @@ On peut également remarquer que le ``Nettoyage des données `` donne les meille
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
 | Dessert | 405          | 1           | 1                   |
-| Entrée  | 3            | 250         | 84                  |
-| Plat principal | 6    | 70          | 568                 |
+| Entrée  | 3            | 253         | 81                  |
+| Plat principal | 6    | 69          | 569                 |
 
 Le modèle a du mal à distinguer les classes "Entrée" et "Plat principal", comme indiqué par les 84 exemples de la classe "Entrée" classés à tort comme "Plat principal" et les 70 exemples de la classe "Plat principal" classés à tort comme "Entrée".
 
@@ -116,13 +116,13 @@ Les termes fréquents partagés entre les recettes d'entrées et de plats princi
 
 
 ### Word2Vec
-``Matrice de Confusion :`
+``Matrice de Confusion :``
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
-| Dessert | 402          | 2           | 3                   |
-| Entrée  | 3            | 223         | 111                  |
-| Plat principal | 5    | 76          | 523                 |
+| Dessert | 404          | 1           | 2                   |
+| Entrée  | 5            | 229         | 103                  |
+| Plat principal | 4    | 54          | 586                 |
 
 
 Des erreurs significatives sont observées, notamment dans la classification des recettes de la classe "Plat principal" où 111 exemples sont classés à tort comme "Entrée".
@@ -130,13 +130,13 @@ Des erreurs significatives sont observées, notamment dans la classification des
 Word2Vec capture la sémantique des mots, mais la similarité sémantique entre les recettes de "Plat principal" et "Entrée" peut conduire à des confusions, en particulier si certaines entrées ressemblent à des plats principaux et vice versa.
 
 ### Bag of Words :
-``Matrice de Confusion :`
+``Matrice de Confusion :``
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
-| Dessert | 402          | 1           | 1                   |
-| Entrée  | 4            | 244         | 89                  |
-| Plat principal | 8    | 75          | 561                 |
+| Dessert | 405          | 1           | 1                   |
+| Entrée  | 3            | 244         | 89                  |
+| Plat principal | 7    | 75          | 558                 |
 
 
 Le modèle semble avoir des difficultés similaires à distinguer les classes "Entrée" et "Plat principal" comme observé dans les autres méthodes.
