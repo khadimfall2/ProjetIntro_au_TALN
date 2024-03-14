@@ -1,4 +1,4 @@
-# DEFT2013 Tâche 2 :
+# DEFT2013 Tâche 2 : Mouride
 
 
 | **Baye Lahad Mbacke M1 ATAL** | **Khadim Fall M1 DS**
