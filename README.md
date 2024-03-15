@@ -57,14 +57,14 @@
 
 
 ## NB:(Nettoyage et Hyperparametres)
- On a nettoyer les données en supprimant  les caractères non alphabétiques,tokeniser et enlever la casse avec ``simple_preprocess``, (on n'avait creer  notre propre fonction pour tokenizer,et supprmer la casse mais notre fonction n'etait pas trop efficace )on a aussi enlever les stop words avec ``stop_words`` nltk, on a aussi stemmer les mots avec ``FrenchStemmer`` de nltk , enfin on a lemmatizer les mots avec la librairie ``Spacy``.
- Avec les methodes suivantes nous avons utilisé le classificateur ``SVM`` avec le noyau gaussien car c'est celui qui a donnee les meilleurs resultats contre (Regression logistique,Random Forest, Gradient Boosting, AdaBoost, Naive Bayes qu'on teste) avec les parametres gaussien (rbf) et C=5 car on a tester les  hyperprametres avec GridSearchCV de ``scikit-learn`` c'est celui qui a donnee les meilleurs resultats.
+On a nettoyé les données en supprimant les caractères non alphabétiques, en tokenisant et en enlevant la casse avec simple_preprocess. On avait créé notre propre fonction pour tokenizer et supprimer la casse, mais notre fonction n'était pas trop efficace. On a aussi enlevé les stop words avec stop_words de nltk, on a également appliqué le stemming des mots avec FrenchStemmer de nltk, et enfin, on a lemmatisé les mots avec la librairie Spacy.
 
+Avec les méthodes suivantes, nous avons utilisé le classificateur SVM avec le noyau gaussien car c'est celui qui a donné les meilleurs résultats par rapport à la régression logistique, Random Forest, Gradient Boosting, AdaBoost et Naive Bayes que nous avons testés, avec les paramètres gaussien (rbf) et C=5, car après avoir testé les hyperparamètres avec GridSearchCV de scikit-learn, c'est celui qui a donné les meilleurs résultats.
 ### Run2: TF-IDF
 
-    Pour la méthode Run2, nous utilisons la représentation TF-IDF pour la vectorisation des données textuelles
-    Les descripteurs utilisés sont les valeurs TF-IDF des termes présents dans les titres et recettes de cuisine.
-    Le classifieur utilisé est SVM avec un noyau gaussien (RBF). 
+    Pour la méthode Run2, nous utilisons la représentation TF-IDF pour la vectorisation des données textuelles.
+    Les descripteurs utilisés sont les valeurs TF-IDF des termes présents dans les titres et les recettes de cuisine.
+    Le classifieur utilisé est le SVM avec un noyau gaussien (RBF).
 
 ### Run3: Word2Vec
 
@@ -97,10 +97,9 @@
 | Bag of Words  | 0.865 |
 
 
-Comme vous l'avez remarqué, les résultats sont meilleurs avec le ``Nettoyage des données``. Cela s'explique par le fait que le nettoyage des données permet de réduire le bruit et d'améliorer la qualité des représentations vectorielles des titres et des recettes de cuisine, ce qui facilite la tâche de classification pour les modèles. Lors du nettoyage des données, nous avons commencé par tokenizer et mettre en minuscule les mots avec une fonction simple que nous avons créée, mais cela n'a pas donné grand-chose. Nous avons donc décidé d'utiliser ``simple_preprocess`` de Gensim, qui est plus performant et plus simple et cela a un peu amélioré nos résultats. Nous avons également enlevé les stop words avec ``stop_words``, et nous avons aussi stemmé les mots avec ``FrenchStemmer``. Enfin, nous avons lemmatisé les mots avec la librairie ``Spacy``. Nous avons constaté aussi que si nous faisons le stemming avant la lemmatisation, nous obtenons des résultats (0.866) moins bons que si nous faisons seulement le stemming (0.874), et si nous faisons la lemmatisation avant le stemming, cela donne les meilleurs résultats que nous avons eus avec le nettoyage des données (0.877). Ceci peut être expliqué par le fait que le stemmer enlève des lettres et donc des informations qui peuvent être utiles pour la classification. On a note aussi avec la fonction ``simple_preprocess``avec le parametre ``min_len=1`` qui permet de garder les mots de taille 1 donne de meilleurs resultats avec le `TF-IDF`` et le ``Bag of Words``.
+Comme vous l'avez remarqué, les résultats sont meilleurs avec le Nettoyage des données. Cela s'explique par le fait que le nettoyage des données permet de réduire le bruit et d'améliorer la qualité des représentations vectorielles des titres et des recettes de cuisine, facilitant ainsi la tâche de classification pour les modèles. Lors du nettoyage, nous avons commencé par tokenizer et mettre en minuscule les mots avec une fonction simple que nous avions créée, mais cela n'a pas été très concluant. Nous avons donc décidé d'utiliser simple_preprocess de Gensim, qui est plus performant et plus simple ; cela a légèrement amélioré nos résultats. Nous avons également enlevé les stop words avec stop_words et avons stemmé les mots avec FrenchStemmer. Enfin, nous avons lemmatisé les mots avec la librairie Spacy. Nous avons constaté aussi que si nous réalisons le stemming avant la lemmatisation, nous obtenons des résultats moins bons (0.866) que si nous effectuons uniquement le stemming (0.874). Et si nous réalisons la lemmatisation avant le stemming, cela donne les meilleurs résultats que nous avons obtenus avec le nettoyage des données (0.877). Ceci peut être expliqué par le fait que le stemmer enlève des lettres, et donc des informations qui peuvent être utiles pour la classification. On a également noté qu'avec la fonction simple_preprocess et le paramètre min_len=1, qui permet de garder les mots de taille 1, on obtient de meilleurs résultats avec le TF-IDF et le Bag of Words.
 
-On peut également remarquer que le ``Nettoyage des données `` donne les meilleurs résultats sur toutes les autres méthodes. Avec ``Word2Vec``, par exemple, la  macro avg passe de 0.838 à 0.867, ce qui représente une différence de ``0.029``, et avec ``Bag of Words``, elle passe de 0.851 à 0.861, soit une différence de ``0.014``. Ainsi, avec le nettoyage des données, c'est Word2Vec qui s'est beaucoup amélioré par rapport aux autres méthodes, suivi par le ``TF-IDF`` 
-
+On peut également remarquer que le Nettoyage des données améliore les résultats sur toutes les autres méthodes. Avec Word2Vec, par exemple, la macro avg passe de 0.838 à 0.867, ce qui représente une amélioration de 0.029, et avec Bag of Words, elle passe de 0.851 à 0.861, soit une amélioration de 0.014. Ainsi, avec le nettoyage des données, c'est Word2Vec qui s'est le plus amélioré par rapport aux autres méthodes, suivi par le TF-IDF.
 
 ### Analyse des resultats
 
@@ -134,7 +133,7 @@ On peut également remarquer que le ``Nettoyage des données `` donne les meille
 | Plat principal | 7    | 75          | 562                 |
 
 
-Parmis les metodes qu'on a proposer , on voit que la classe ``desert`` est tres bien  predite par les 3 methodes ceci peut etre explique le fait que le ``desert`` a des recettes specifique, mais les methodes ont du mal a predire les classes ``plat principal`` et ``entree``, on peut dire que les erreurs de classification sont principalement dues à la confusion entre les ``entree`` et les ``plat principal``. Cela peut s'expliquer par le fait que les ``entree`` et les ``plat principal`` ont souvent des recettes ou  des titres similaires, ce qui rend la tâche de classification plus difficile ,ou certains plats peuvent se servir indifféremment en ``entree`` ou en  ``plat principal``
+Parmi les méthodes que nous avons proposées, on remarque que la classe dessert est très bien prédite par les trois méthodes, ce qui peut s'expliquer par le fait que les desserts ont des recettes spécifiques. Cependant, les méthodes ont du mal à prédire les classes plat principal et entrée. On peut dire que les erreurs de classification sont principalement dues à la confusion entre les entrées et les plats principaux. Cela peut s'expliquer par le fait que les entrées et les plats principaux ont souvent des recettes ou des titres similaires, ce qui rend la tâche de classification plus difficile, ou certains plats peuvent se servir indifféremment en entrée ou en plat principal.
 
 ### References
 - slides du cours et les codes des TP
