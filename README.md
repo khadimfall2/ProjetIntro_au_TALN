@@ -112,10 +112,6 @@ On peut également remarquer que le ``Nettoyage des données `` donne les meille
 | Entrée  | 3            | 253         | 81                  |
 | Plat principal | 6    | 69          | 569                 |
 
-Le modèle a du mal à distinguer les classes "Entrée" et "Plat principal", comme indiqué par les 84 exemples de la classe "Entrée" classés à tort comme "Plat principal" et les 70 exemples de la classe "Plat principal" classés à tort comme "Entrée".
-
-Les termes fréquents partagés entre les recettes d'entrées et de plats principaux peuvent conduire à une similarité dans les vecteurs TF-IDF, ce qui complique la distinction pour le modèle.
-
 
 ### Word2Vec
 ``Matrice de Confusion :``
@@ -127,10 +123,6 @@ Les termes fréquents partagés entre les recettes d'entrées et de plats princi
 | Plat principal | 4    | 54          | 586                 |
 
 
-Des erreurs significatives sont observées, notamment dans la classification des recettes de la classe "Plat principal" où 111 exemples sont classés à tort comme "Entrée".
-
-Word2Vec capture la sémantique des mots, mais la similarité sémantique entre les recettes de "Plat principal" et "Entrée" peut conduire à des confusions, en particulier si certaines entrées ressemblent à des plats principaux et vice versa.
-
 ### Bag of Words :
 ``Matrice de Confusion :``
 
@@ -141,4 +133,13 @@ Word2Vec capture la sémantique des mots, mais la similarité sémantique entre 
 | Plat principal | 7    | 75          | 562                 |
 
 
-Le modèle semble avoir des difficultés similaires à distinguer les classes "Entrée" et "Plat principal" comme observé dans les autres méthodes , il parvient a prdire correctement ``244`` Entrée et i .
+Parmis les metodes qu'on a proposer , on voit que la classe ``desert`` est tres bien  predite par les 3 methodes ceci peut etre explique le fait que le ``desert`` a des recettes specifique, mais les methodes ont du mal a predire les classes ``plat principal`` et ``entree``, on peut dire que les erreurs de classification sont principalement dues à la confusion entre les ``entree`` et les ``plat principal``. Cela peut s'expliquer par le fait que les ``entree`` et les ``plat principal`` ont souvent des recettes ou  des titres similaires, ce qui rend la tâche de classification plus difficile ,ou certains plats peuvent se servir indifféremment en ``entree`` ou en  ``plat principal``
+
+### References
+- slides du cours et les codes des TP
+- https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+- https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
+- https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
+- https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+- https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html
+- https://deft.lisn.upsaclay.fr/actes/2013/pdf/deft13_submission_0.pdf
