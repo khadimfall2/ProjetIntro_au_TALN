@@ -12,10 +12,10 @@
 **Difficulté** : Facile  
 **Coût** : Moyen  
 **Ingrédients** :
-- 1 langue de 1,5 kg
-- 20 cl de vinaigre d'alc...  
+- 1 langue de 1,5 kg - 20 cl de vinaigre d'alcool  - 1 oignon piqué de 3 - clous de girofle - 2 bouillons cubes - 1 branche de thym - 5 feuilles de laurier - sel - poivre - 50 g de beurre - 1 oignon émincé - 3 cuillères à soupe de farine - 100 g de cornichons - 1 cuillère à café d'arôme Patrelle ou du concentré de tomate"
+ 
+**Recette** : "Faire tremper la langue toute une nuit dans une cocotte remplie d'eau pour la dégorger. Dans une cocotte minute, mettre la langue, couvrir d'eau, ajouter la moitié du vinaigre. Faire bouillir pendant 15 min. Egouter. Pendant ce temps, faire bouillir de l'eau. Remettre la langue dans la cocotte, y verser l'eau bouillante, le reste du vinaigre, 1 oignon piqué de 3 clous de girofle, 2 bouillon cubes, le thym, le laurier, sel et poivre. Laisser cuire 1h30 à partir de l'ébullition. Retirer la langue de la cocotte et ôter la peau, garder le bouillon. Sauce : faire fondre le beurre dans une grande casserole, ajouter un oignon émincé, faire fondre, ajouter la farine. Puis ajouter petit à petit environ 1 l de bouillon de cuisson, 1 cuillère à café d'arôme Patrelle pour coloré la sauce. Goûter la sauce. Ajouter sel et poivre si besoin, les cornichons coupés en rondelles. Dans un plat de service, déposer la langue coupée en tranches et napper de sauce. Bonne appétit.Ce plat est encore meilleur réchauffé."
 
-**Recette** : Faire tremper la langue toute une nuit dans un...
 
 ## Exemple de document 2 :
 **Identifiant** : recette_21519.xml  
@@ -24,8 +24,11 @@
 **Difficulté** : Facile  
 **Coût** : Moyen  
 **Ingrédients** :
-- 1 pâte brisée
-- 150 g de raisins bien mûrs
+- 1 pâte brisée - 150 g de raisins bien mûrs - 3 oeufs - 100 g de sucre - 3 cuillères à soupe de crème fraîche - 60 g de poudre d'amandes"
+
+**Recette** : "Garnissez une tourtière avec la pâte étalée. Faites-la cuire à blanc, 10 min à 180°C (thermostat 6). Répartissez les grains de raisins lavés et séchés dessus. Fouettez les oeufs avec le sucre, la crème et la poudre d'amandes. Versez sur les raisins et faites cuire 30 min au four à 200°C (thermostat 6-7)."
+
+
 
 ## Statistiques corpus
 
@@ -54,21 +57,21 @@
 
 
 ## NB:
- On a nettoyer les données en supprimant  les caractères non alphabétiques,tokeniser et enlever la casse avec ``simple_preprocess``on a aussi enlever les stop words avec ``stop_words`` nltk, on a aussi stemmer les mots avec ``FrenchStemmer`` de nltk , enfin on lemmentizer les mots avec la librairie ``Spacy``
- avec les methodes suivantes nous avons utilisé le classificateur ``SVM`` avec le noyau gaussien car c'est celui qui a donnee les meilleurs resultats contre (Regression logistique,Random Forest, Gradient Boosting, AdaBoost, Naive Bayes) avec les parametres gaussien (rbf) et C=5 car on a supposer que tester les  hyperprametres avec GridSearchCV de scikit-learn c'est celui qui a donnee les meilleurs resultats.
+ On a nettoyer les données en supprimant  les caractères non alphabétiques,tokeniser et enlever la casse avec ``simple_preprocess``, (on n'avait creer  notre propre fonction pour tokenizer,et supprmer la casse mais notre fonction n'etait pas trop efficace )on a aussi enlever les stop words avec ``stop_words`` nltk, on a aussi stemmer les mots avec ``FrenchStemmer`` de nltk , enfin on a lemmatizer les mots avec la librairie ``Spacy``.
+ Avec les methodes suivantes nous avons utilisé le classificateur ``SVM`` avec le noyau gaussien car c'est celui qui a donnee les meilleurs resultats contre (Regression logistique,Random Forest, Gradient Boosting, AdaBoost, Naive Bayes qu'on teste) avec les parametres gaussien (rbf) et C=5 car on a tester les  hyperprametres avec GridSearchCV de ``scikit-learn`` c'est celui qui a donnee les meilleurs resultats.
 
 ### Run2: TF-IDF
 
-    Pour la méthode Run2, nous utilisons également la représentation TF-IDF (Term Frequency-Inverse Document Frequency) pour la vectorisation des données textuelles
-    Les descripteurs utilisés sont les valeurs TF-IDF des termes présents dans les recettes de cuisine.
-    Nous avons utilise le modèle de Support Vector Machine (SVM)
+    Pour la méthode Run2, nous utilisons la représentation TF-IDF pour la vectorisation des données textuelles
+    Les descripteurs utilisés sont les valeurs TF-IDF des termes présents dans les titres et recettes de cuisine.
+
 ### Run3: Word2Vec
 
-    Les descripteurs sont les vecteurs de documents moyens générés à partir du modèle Word2Vec. Ces vecteurs représentent chaque document (dans ce cas, chaque recette de cuisine) sous forme d'un vecteur numérique dense dans un espace vectoriel continu
-    Le classifieur utilisé SVM avec un noyau gaussien (RBF).. On a ajuster les parametres avec GridSearchCV de scikit-learn pour trouver les meilleurs hyperparametres de Word2Vec et on vecteur_size=150,window=10, min_count=2, sg=1 (skip-gram)
+    Descripteurs : Word2Vec.
+    Le classifieur utilisé SVM avec un noyau gaussien (RBF). On a ajuster les parametres avec GridSearchCV de scikit-learn pour trouver les meilleurs hyperparametres de Word2Vec et on vecteur_size=150, le nombre de mots avant et apres le mots actuels (window=10), et le minimum de la frequence du mot qu'on doit garder doit etre 2 (min_count=2), on aussi utiliseer le skip-gram (sg=1) et aussi on a fixe le nombre de thread a 1 par avoir la reproducibilite des resultats (workers=1)
+
 ### Run4: Bag of Words
-    Les descripteurs sont les vecteurs de compte des termes présents dans les recettes de cuisine. Chaque terme unique dans l'ensemble des données est représenté par un vecteur de caractéristiques, où chaque élément du vecteur représente le nombre d'occurrences du terme correspondant dans le document.
-    Le classifieur utilisé est une machine à vecteurs de support (SVM) avec un noyau gaussien (RBF).
+    Descripteurs : Bag of Words.
 
 ## Résultats
 
@@ -90,11 +93,10 @@
 | baseline |  0.356 |
 | TF-IDF   |  0.877 |
 | Word2Vec |  0.867 |
-| Bag of Words  | 0.861 |
+| Bag of Words  | 0.865 |
 
 
-Comme vous l'avez remarqué, les résultats sont meilleurs avec le ``Nettoyage des données``, en particulier pour la méthode ``TF-IDF``. Cela s'explique par le fait que le nettoyage des données permet de réduire le bruit et d'améliorer la qualité des représentations vectorielles des titres et des recettes de cuisine, ce qui facilite la tâche de classification pour les modèles. Lors du nettoyage des données, nous avons commencé par tokenizer et mettre en minuscule les mots avec une fonction simple que nous avons créée, mais cela n'a pas donné grand-chose. Nous avons donc décidé d'utiliser ``simple_preprocess`` de Gensim, qui est plus performant car cela a un peu amélioré les résultats. Nous avons également enlevé les stop words avec ``stop_words`` de NLTK, et nous avons aussi stemmé les mots avec ``FrenchStemmer`` de NLTK. Enfin, nous avons lemmatisé les mots avec la librairie ``Spacy``. Nous avons constaté aussi que si nous faisons le stemming avant la lemmatisation, nous obtenons des résultats (0.866) moins bons que si nous faisons seulement le stemming (0.874), et si nous faisons la lemmatisation avant le stemming, cela donne les meilleurs résultats que nous avons eus avec le nettoyage des données (0.877). Ceci peut être expliqué par le fait que le stemmer enlève des lettres et donc des informations qui peuvent être 
-utiles pour la classification.
+Comme vous l'avez remarqué, les résultats sont meilleurs avec le ``Nettoyage des données``. Cela s'explique par le fait que le nettoyage des données permet de réduire le bruit et d'améliorer la qualité des représentations vectorielles des titres et des recettes de cuisine, ce qui facilite la tâche de classification pour les modèles. Lors du nettoyage des données, nous avons commencé par tokenizer et mettre en minuscule les mots avec une fonction simple que nous avons créée, mais cela n'a pas donné grand-chose. Nous avons donc décidé d'utiliser ``simple_preprocess`` de Gensim, qui est plus performant et plus simple et cela a un peu amélioré nos résultats. Nous avons également enlevé les stop words avec ``stop_words``, et nous avons aussi stemmé les mots avec ``FrenchStemmer``. Enfin, nous avons lemmatisé les mots avec la librairie ``Spacy``. Nous avons constaté aussi que si nous faisons le stemming avant la lemmatisation, nous obtenons des résultats (0.866) moins bons que si nous faisons seulement le stemming (0.874), et si nous faisons la lemmatisation avant le stemming, cela donne les meilleurs résultats que nous avons eus avec le nettoyage des données (0.877). Ceci peut être expliqué par le fait que le stemmer enlève des lettres et donc des informations qui peuvent être utiles pour la classification.
 
 On peut également remarquer que le ``Nettoyage des données `` donne les meilleurs résultats sur toutes les autres méthodes. Avec ``Word2Vec``, par exemple, la  macro avg passe de 0.838 à 0.867, ce qui représente une différence de ``0.029``, et avec ``Bag of Words``, elle passe de 0.851 à 0.861, soit une différence de ``0.010``. Ainsi, avec le nettoyage des données, c'est Word2Vec qui s'est beaucoup amélioré par rapport aux autres méthodes, suivi par le ``TF-IDF`` 
 
@@ -102,7 +104,7 @@ On peut également remarquer que le ``Nettoyage des données `` donne les meille
 ### Analyse des resultats
 
 ### TF-IDF :
-``Matrice de Confusion :`
+``Matrice de Confusion :``
 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
@@ -135,10 +137,8 @@ Word2Vec capture la sémantique des mots, mais la similarité sémantique entre 
 |         | Pred Dessert | Pred Entrée | Pred Plat principal |
 |---------|--------------|-------------|---------------------|
 | Dessert | 405          | 1           | 1                   |
-| Entrée  | 3            | 244         | 89                  |
-| Plat principal | 7    | 75          | 558                 |
+| Entrée  | 5            | 244         | 88                  |
+| Plat principal | 7    | 75          | 562                 |
 
 
-Le modèle semble avoir des difficultés similaires à distinguer les classes "Entrée" et "Plat principal" comme observé dans les autres méthodes.
-
-Comme avec TF-IDF, la représentation BoW par CountVectorizer peut également souffrir de la similarité entre les termes fréquents des titre ou recettes d'entrées et de plats principaux.
+Le modèle semble avoir des difficultés similaires à distinguer les classes "Entrée" et "Plat principal" comme observé dans les autres méthodes , il parvient a prdire correctement ``244`` Entrée et i .
