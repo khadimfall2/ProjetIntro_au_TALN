@@ -14,7 +14,7 @@
 **Ingrédients** :
 - 1 langue de 1,5 kg - 20 cl de vinaigre d'alcool  - 1 oignon piqué de 3 - clous de girofle - 2 bouillons cubes - 1 branche de thym - 5 feuilles de laurier - sel - poivre - 50 g de beurre - 1 oignon émincé - 3 cuillères à soupe de farine - 100 g de cornichons - 1 cuillère à café d'arôme Patrelle ou du concentré de tomate"
  
-**Recette** : "Faire tremper la langue toute une nuit dans une cocotte remplie d'eau pour la dégorger. Dans une cocotte minute, mettre la langue, couvrir d'eau, ajouter la moitié du vinaigre. Faire bouillir pendant 15 min. Egouter. Pendant ce temps, faire bouillir de l'eau. Remettre la langue dans la cocotte, y verser l'eau bouillante, le reste du vinaigre, 1 oignon piqué de 3 clous de girofle, 2 bouillon cubes, le thym, le laurier, sel et poivre. Laisser cuire 1h30 à partir de l'ébullition. Retirer la langue de la cocotte et ôter la peau, garder le bouillon. Sauce : faire fondre le beurre dans une grande casserole, ajouter un oignon émincé, faire fondre, ajouter la farine. Puis ajouter petit à petit environ 1 l de bouillon de cuisson, 1 cuillère à café d'arôme Patrelle pour coloré la sauce. Goûter la sauce. Ajouter sel et poivre si besoin, les cornichons coupés en rondelles. Dans un plat de service, déposer la langue coupée en tranches et napper de sauce. Bonne appétit.Ce plat est encore meilleur réchauffé."
+**Recette** : Faire tremper la langue toute une nuit dans une cocotte remplie d'eau pour la dégorger. Dans une cocotte minute, mettre la langue, couvrir d'eau, ajouter la moitié du vinaigre. Faire bouillir pendant 15 min. Egouter. Pendant ce temps, faire bouillir de l'eau. Remettre la langue dans la cocotte, y verser l'eau bouillante, le reste du vinaigre, 1 oignon piqué de 3 clous de girofle, 2 bouillon cubes, le thym, le laurier, sel et poivre. Laisser cuire 1h30 à partir de l'ébullition. Retirer la langue de la cocotte et ôter la peau, garder le bouillon. Sauce : faire fondre le beurre dans une grande casserole, ajouter un oignon émincé, faire fondre, ajouter la farine. Puis ajouter petit à petit environ 1 l de bouillon de cuisson, 1 cuillère à café d'arôme Patrelle pour coloré la sauce. Goûter la sauce. Ajouter sel et poivre si besoin, les cornichons coupés en rondelles. Dans un plat de service, déposer la langue coupée en tranches et napper de sauce. Bonne appétit.Ce plat est encore meilleur réchauffé.
 
 
 ## Exemple de document 2 :
@@ -26,7 +26,7 @@
 **Ingrédients** :
 - 1 pâte brisée - 150 g de raisins bien mûrs - 3 oeufs - 100 g de sucre - 3 cuillères à soupe de crème fraîche - 60 g de poudre d'amandes"
 
-**Recette** : "Garnissez une tourtière avec la pâte étalée. Faites-la cuire à blanc, 10 min à 180°C (thermostat 6). Répartissez les grains de raisins lavés et séchés dessus. Fouettez les oeufs avec le sucre, la crème et la poudre d'amandes. Versez sur les raisins et faites cuire 30 min au four à 200°C (thermostat 6-7)."
+**Recette** : Garnissez une tourtière avec la pâte étalée. Faites-la cuire à blanc, 10 min à 180°C (thermostat 6). Répartissez les grains de raisins lavés et séchés dessus. Fouettez les oeufs avec le sucre, la crème et la poudre d'amandes. Versez sur les raisins et faites cuire 30 min au four à 200°C (thermostat 6-7).
 
 
 
@@ -37,7 +37,7 @@
 |   Dataset     | nombre :|
 |---------------|--------|
 | Entraînement  |  9978  |
-| dev:          |  2495  |
+| dev           |  2495  |
 | Test          |  1388  |
 
 **Répartition des étiquettes dans chacun des sous-ensembles :**
@@ -56,7 +56,7 @@
 	DummyClassifier de scikit-learn avec la stratégie 'stratified'. Cette stratégie génère des prédictions en respectant la distribution des classes dans l'ensemble de données d'entraînement.
 
 
-## NB:
+## NB:(Nettoyage et Hyperparametres)
  On a nettoyer les données en supprimant  les caractères non alphabétiques,tokeniser et enlever la casse avec ``simple_preprocess``, (on n'avait creer  notre propre fonction pour tokenizer,et supprmer la casse mais notre fonction n'etait pas trop efficace )on a aussi enlever les stop words avec ``stop_words`` nltk, on a aussi stemmer les mots avec ``FrenchStemmer`` de nltk , enfin on a lemmatizer les mots avec la librairie ``Spacy``.
  Avec les methodes suivantes nous avons utilisé le classificateur ``SVM`` avec le noyau gaussien car c'est celui qui a donnee les meilleurs resultats contre (Regression logistique,Random Forest, Gradient Boosting, AdaBoost, Naive Bayes qu'on teste) avec les parametres gaussien (rbf) et C=5 car on a tester les  hyperprametres avec GridSearchCV de ``scikit-learn`` c'est celui qui a donnee les meilleurs resultats.
 
@@ -137,9 +137,13 @@ Parmis les metodes qu'on a proposer , on voit que la classe ``desert`` est tres 
 
 ### References
 - slides du cours et les codes des TP
+- https://deft.lisn.upsaclay.fr/actes/2013/pdf/deft13_submission_0.pdf
+- https://www.nltk.org/
+- https://spacy.io/models/fr
+- https://tedboy.github.io/nlps/generated/generated/gensim.utils.simple_preprocess.html 
 - https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 - https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
 - https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
 - https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
 - https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html
-- https://deft.lisn.upsaclay.fr/actes/2013/pdf/deft13_submission_0.pdf
+- https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html
